@@ -39,3 +39,28 @@ html {
         margin-top: 1rem;
     }
 }
+
+            .responsive-layout {
+            display: flex;
+            gap: 1rem;
+            }
+            .left-aside, .right-aside {
+            flex: 1;
+            }
+            main {
+            flex: 2;
+            }
+            @media (max-width: 768px) {
+            .responsive-layout {
+                flex-direction: column;
+            }
+            .left-aside {
+                order: 1;
+            }
+            main {
+                order: 2;
+            }
+            .right-aside {
+                order: 3;
+            }
+            }
