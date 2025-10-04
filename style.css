@@ -1,0 +1,41 @@
+/*
+    - [x] Use a class selector
+    - [ ] Use an ID selector
+    - [ ] Use a pseudo-element OR pseudo-class
+    - [x] Use a Descendant Selector (e.g., div p)
+    - [x] Use a Child Selector (e.g., div > p)
+    - [ ] Use an Adjacent Sibling Selector (e.g., div + p)
+    - [ ] Use a General Sibling Selector (e.g., div ~ p)
+*/
+
+/* Global styles */
+
+html {
+    background-color: #ffe6ff;
+}
+
+/* Index styles */
+
+.post {
+    background-color: #ffcdff;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 90ch;
+    margin: 2rem auto;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            border-radius: 50%;
+        }
+    }
+
+    > img {
+        max-width: 100%;
+        border-radius: 1rem;
+        margin-top: 1rem;
+    }
+}
