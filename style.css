@@ -1,11 +1,11 @@
 /*
     - [x] Use a class selector
-    - [ ] Use an ID selector
-    - [ ] Use a pseudo-element OR pseudo-class
+    - [x] Use an ID selector
+    - [x] Use a pseudo-element OR pseudo-class
     - [x] Use a Descendant Selector (e.g., div p)
     - [x] Use a Child Selector (e.g., div > p)
     - [ ] Use an Adjacent Sibling Selector (e.g., div + p)
-    - [ ] Use a General Sibling Selector (e.g., div ~ p)
+    - [x] Use a General Sibling Selector (e.g., div ~ p)
 */
 
 /* Global styles */
@@ -16,6 +16,9 @@ html {
 
 /* Index styles */
 
+header ~ footer{
+    display: flex
+}
 .post {
     background-color: #ffcdff;
     border-radius: 1rem;
@@ -40,27 +43,76 @@ html {
     }
 }
 
-            .responsive-layout {
-            display: flex;
-            gap: 1rem;
-            }
-            .left-aside, .right-aside {
-            flex: 1;
-            }
-            main {
-            flex: 2;
-            }
-            @media (max-width: 768px) {
-            .responsive-layout {
-                flex-direction: column;
-            }
-            .left-aside {
-                order: 1;
-            }
-            main {
-                order: 2;
-            }
-            .right-aside {
-                order: 3;
-            }
-            }
+.responsive-layout {
+    display: flex;
+    gap: 1rem;
+}
+.left-aside, .right-aside {
+    flex: 1;
+}
+main {
+    flex: 2;
+}
+@media (max-width: 768px) {
+    .responsive-layout {
+        flex-direction: column;
+    }
+    .left-aside {
+        order: 1;
+    }
+    main {
+        order: 2;
+    }
+    .right-aside {
+        order: 3;
+    }
+}
+
+@media (min-width: 769px) {
+    aside{
+        max-width: 200px;
+    }
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3498db; /* Changed background color */
+    padding: 10px 20px;
+    border-radius: 1rem;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.main-nav ul li {
+    margin-right: 20px;
+}
+.main-nav ul li:last-child {
+    margin-right: 0;
+}
+.main-nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+.main-nav img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+}
+
+.main-nav ul li a:hover {
+    background-color: #093756; /* Darker blue on hover */
+}
+
+aside{
+    background-color: #ffb3ff;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
