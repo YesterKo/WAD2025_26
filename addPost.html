@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add Post</title>
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+
+    <!-- Top bar-->
+     <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+        <a href="index.html" aria-label="Home">
+            <img src="img/pfp1.jpg" alt="Profile picture">
+        </a>
+     </nav>
+
+    <!-- Centerd card for Add Post -->
+    <main class="post" id="add-post-card">
+        <form class="add-post-form" action="index.html" method="get" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="post-body">Post body</label>
+                <textarea id="post-body" name="body" rows="4" placeholder="Write something..." required></textarea>
+            </div> 
+            
+            <div class="form-group">
+                <label for="file">Select file</label>
+                <input id="file" name="file" type="file">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Create post</button>
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>
