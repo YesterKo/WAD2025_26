@@ -41,7 +41,7 @@
     border-radius: 4px;
 }
 
-.form-row input[type="file"] {
+.form-row label + input[type="file"] {
     width: 170px;
     background: #bdbdbd;
     border: 1px solid #888;
