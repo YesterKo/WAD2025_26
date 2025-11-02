@@ -1,6 +1,7 @@
 async function fetchPosts() {
   const res = await fetch(
-    "https://api.jsonbin.io/v3/b/6907327f43b1c97be9939828",
+    //"https://api.jsonbin.io/v3/b/69079ca6ae596e708f400606",
+    "./posts.json",
   );
   const data = await res.json();
   const posts = data.record.posts;
