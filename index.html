@@ -11,21 +11,29 @@
         ></script>
     </head>
     <body>
+        <!-- Changed for HW 2 -->
         <header>
             <nav class="main-nav">
                 <ul>
                     <li><a href="">Home</a></li>
                     <li><a href="./addPost.html">addPost</a></li>
                 </ul>
-                <a href="login.html"
-                    ><img
-                        src="img/pfp1.jpg"
-                        alt="Profile Picture"
-                        width="40"
-                        height="40"
-                /></a>
+                <div class="user-profile">
+                    <button class="profile-btn" id="profileBtn" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/pfp1.jpg" alt="Kadri Paan" width="40" height="40">
+                    </button>
+
+                    <div class="dropdown" id="profileDropdown">
+                        <ul class="menu">
+                            <li class="menu-name">John Doe</li>
+                            <li class="menu-email">john.doe@ut.ee</li>
+                            <li><a class="menu-link" href="login.html">logout</a></li>
+                        </ul>
+                        </div>
+                </div> 
             </nav>
         </header>
+        <!-- Changed for HW 2 ends -->
         <div class="responsive-layout">
             <aside class="left-aside">
                 <p>This is the left aside.</p>
@@ -38,6 +46,7 @@
         <footer>
             <p>This is a footer.</p>
         </footer>
+        <script src="scripts/dropdown.js"></script>
         <script src="scripts/posts.js" defer></script>
     </body>
 </html>
