@@ -1,0 +1,65 @@
+{ "record":
+{
+  "posts": [
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": "img/food.jpg",
+      "text": "Jippie food hihi!"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "What are bananas made of?"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "Einstein has a funny nose. What do you guys think about that?"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": "img/city.jpg",
+      "text": "Look at the picture I made :O"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "So tired today. Gonna sleep."
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "Eat to much"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "Run my first 10k"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "I want to go home from work"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "Nice food"
+    },
+    {
+      "authorImage": "img/pfp1.jpg",
+      "date": "Oct 3, 2025",
+      "image": null,
+      "text": "So tired today."
+    }
+  ]
+}}
