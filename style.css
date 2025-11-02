@@ -10,8 +10,9 @@
 
 /* Global styles */
 
-html { background-color: #ffe6ff; }
-body { margin: 0; padding: 0; }
+html {
+    background-color: #ffe6ff;
+}
 
 /* Index styles */
 
@@ -19,7 +20,7 @@ header ~ footer{
     display: flex
 }
 .post {
-    background-color: #ffcdff;
+    background-color: #f3c1d9;
     border-radius: 1rem;
     padding: 1rem;
     max-width: 90ch;
@@ -109,21 +110,28 @@ main {
     background-color: #093756; /* Darker blue on hover */
 }
 
-aside{
-    background-color: #ffb3ff;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-top: 1rem;
+aside {
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: #442323; 
+}
+
+.left-aside {
+  background: linear-gradient(135deg,   #F5D0E2, #FF7EBE, #7A1036);
+}
+
+.right-aside {
+  background: linear-gradient(225deg, #F5D0E2, #FF7EBE, #7A1036);
 }
 
 /* ===== HW2 ===== */
-
 /* Top navigation bar */
 .main-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #cfcfcf;
+  background: #f8abd1;
   padding: 8px 12px;
   border-radius: 6px;
 }
