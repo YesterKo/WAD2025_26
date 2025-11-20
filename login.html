@@ -29,12 +29,16 @@
             <p class="or">or</p>
             <p class="login-text">Please log in</p>
 
-            <form action="./index.html" method="get">
+            <form id="signupForm" action="./index.html" method="get">
               <input type="email" id="email" name="email" placeholder="Email" required>
               <br>
+
               <input type="password" id="password" name="password" placeholder="Password" required>
               <br>
-              <button type="submit">Log in</button>
+
+              <p id="errorMsg" style="color:red; font-size:14px;"></p>
+
+              <button type="submit">Sign up</button>
             </form>
 
             <div class="forget-password">
@@ -52,5 +56,6 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="scripts/headerFooter.js"></script>
     <script src="scripts/dropdown.js"></script>
+    <script src="scripts/password_validator.js"></script>
   </body>
 </html>
