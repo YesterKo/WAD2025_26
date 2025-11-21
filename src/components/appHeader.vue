@@ -2,7 +2,6 @@
   <header>
     <nav class="main-nav">
       <ul>
-        <!-- Top navigation: Home + addPost only -->
         <li><a href="index.html">Home</a></li>
         <li><a href="addPost.html">addPost</a></li>
       </ul>
@@ -17,7 +16,6 @@
           <img src="img/pfp1.jpg" alt="Kadri Paan" width="40" height="40" />
         </button>
 
-        <!-- All auth actions in the dropdown -->
         <div class="dropdown" id="profileDropdown">
           <ul class="menu">
             <li class="menu-name">John Doe</li>
