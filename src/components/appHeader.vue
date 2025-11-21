@@ -2,6 +2,7 @@
   <header>
     <nav class="main-nav">
       <ul>
+        <!-- TODO: Switch from <a> to <router-link> -->
         <li><a href="index.html">Home</a></li>
         <li><a href="addPost.html">addPost</a></li>
       </ul>
