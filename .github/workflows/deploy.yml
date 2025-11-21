@@ -3,7 +3,7 @@ name: Build and Deploy Vue to GitHub Pages
 on:
   push:
     branches:
-      - vue   # Trigger only on vue branch
+      - vue # Trigger only on vue branch
 
 permissions:
   contents: write
@@ -25,9 +25,6 @@ jobs:
 
       - name: Install Vue CLI
         run: npm install -g @vue/cli
-      
-      - name: serve
-        run: npm run serve
 
       - name: Install dependencies
         run: npm install
@@ -38,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs   # Folder created by Vue build
+          path: dist # Folder created by Vue build
 
   deploy:
     needs: build
