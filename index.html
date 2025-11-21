@@ -1,52 +1,37 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Blog</title>
-        <link rel="stylesheet" href="style.css" />
-        <script
-            src="https://kit.fontawesome.com/c6d10bb031.js"
-            crossorigin="anonymous"
-        ></script>
-    </head>
-    <body>
-        <!-- Changed for HW 2 -->
-        <header>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="./addPost.html">addPost</a></li>
-                </ul>
-                <div class="user-profile">
-                    <button class="profile-btn" id="profileBtn" aria-haspopup="true" aria-expanded="false">
-                        <img src="img/pfp1.jpg" alt="Kadri Paan" width="40" height="40">
-                    </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/c6d10bb031.js" crossorigin="anonymous"></script>
+  </head>
 
-                    <div class="dropdown" id="profileDropdown">
-                        <ul class="menu">
-                            <li class="menu-name">John Doe</li>
-                            <li class="menu-email">john.doe@ut.ee</li>
-                            <li><a class="menu-link" href="login.html">logout</a></li>
-                        </ul>
-                        </div>
-                </div> 
-            </nav>
-        </header>
-        <!-- Changed for HW 2 ends -->
-        <div class="responsive-layout">
-            <aside class="left-aside">
-                <p>This is the left aside.</p>
-            </aside>
-            <main></main>
-            <aside class="right-aside">
-                <p>This is the right aside.</p>
-            </aside>
-        </div>
-        <footer>
-            <p>This is a footer.</p>
-        </footer>
-        <script src="scripts/dropdown.js"></script>
-        <script src="scripts/posts.js" defer></script>
-    </body>
+  <body>
+    <div id="app">
+      <app-header></app-header>
+
+      <div class="responsive-layout">
+        <aside class="left-aside">
+          <p>This is the left aside.</p>
+        </aside>
+
+        <!-- posts.js will fill this -->
+        <main id="posts-container"></main>
+
+        <aside class="right-aside">
+          <p>This is the right aside.</p>
+        </aside>
+      </div>
+
+      <app-footer></app-footer>
+    </div>
+
+    <!-- IMPORTANT: script order -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="scripts/headerFooter.js"></script>
+    <script src="scripts/dropdown.js"></script>
+    <script src="scripts/posts.js" defer></script>
+  </body>
 </html>

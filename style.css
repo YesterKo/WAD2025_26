@@ -221,3 +221,10 @@ aside {
 .menu-link:hover {
   text-decoration: underline;
 }
+.main-footer {
+    background-color: #f8abd1;
+    padding: 10px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
