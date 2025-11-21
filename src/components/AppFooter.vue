@@ -1,5 +1,5 @@
-<component>
-    <footer>
-        <p>This is a footer.</p>
-    </footer>
-</component>
+<template>
+  <footer>
+    <p>This is a footer.</p>
+  </footer>
+</template>
