@@ -23,6 +23,12 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Vue CLI
+        run: npm install -g @vue/cli
+      
+      - name: serve
+        run: npm run serve
+
       - name: Install dependencies
         run: npm install
 
