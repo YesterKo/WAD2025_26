@@ -1,24 +1,19 @@
 # WAD2025_26
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Useful links
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [Vuex practical session](https://courses.cs.ut.ee/2025/WAD/fall/Main/PS010html)
+- [Vuex components](https://vuex.vuejs.org/guide/state.html#getting-vuex-state-into-vue-components)
+- [List rendering in Vue](https://vuejs.org/guide/essentials/list.html#v-for-with-a-component)
