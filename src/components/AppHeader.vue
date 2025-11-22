@@ -14,7 +14,12 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <img src="img/pfp1.jpg" alt="Kadri Paan" width="40" height="40" />
+          <img
+            src="@/assets/pfp1.jpg"
+            alt="Kadri Paan"
+            width="40"
+            height="40"
+          />
         </button>
 
         <div class="dropdown" id="profileDropdown">
