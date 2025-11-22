@@ -28,3 +28,50 @@ export default {
   },
 };
 </script>
+<style>
+.responsive-layout {
+  display: flex;
+  gap: 1rem;
+}
+
+main {
+  flex: 2;
+}
+@media (max-width: 768px) {
+  .responsive-layout {
+    flex-direction: column;
+  }
+  .left-aside {
+    order: 1;
+  }
+  main {
+    order: 2;
+  }
+  .right-aside {
+    order: 3;
+  }
+}
+
+@media (min-width: 769px) {
+  aside {
+    max-width: 200px;
+  }
+}
+
+.left-aside,
+.right-aside {
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: #442323;
+  flex: 1;
+}
+
+.left-aside {
+  background: linear-gradient(135deg, #f5d0e2, #ff7ebe, #7a1036);
+}
+
+.right-aside {
+  background: linear-gradient(225deg, #f5d0e2, #ff7ebe, #7a1036);
+}
+</style>

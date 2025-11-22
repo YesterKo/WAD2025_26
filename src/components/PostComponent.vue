@@ -9,3 +9,28 @@
     <a href="#"><i class="fa-regular fa-thumbs-up"></i></a>
   </article>
 </template>
+<style>
+.post {
+  background-color: #f3c1d9;
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 90ch;
+  margin: 2rem auto;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  > img {
+    max-width: 100%;
+    border-radius: 1rem;
+    margin-top: 1rem;
+  }
+}
+</style>
