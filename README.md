@@ -18,3 +18,4 @@ npm run serve
 - [Vuex components](https://vuex.vuejs.org/guide/state.html#getting-vuex-state-into-vue-components)
 - [List rendering in Vue](https://vuejs.org/guide/essentials/list.html#v-for-with-a-component)
 - [Images in Vue](https://cli.vuejs.org/guide/html-and-static-assets.html#static-assets-handling)
+- [How to use vuex with lists](https://guillaumebriday.fr/laravel-vuejs-building-a-todo-list-part-7-managing-tasks-with-vuex-and-axios)
