@@ -2,9 +2,8 @@
   <header>
     <nav class="main-nav">
       <ul>
-        <!-- TODO: Switch from <a> to <router-link> -->
-        <li><a href="index.html">Home</a></li>
-        <li><a href="addPost.html">addPost</a></li>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/signup">Sign Up</router-link></li>
       </ul>
 
       <div class="user-profile">
@@ -33,7 +32,9 @@
           <ul class="menu">
             <li class="menu-name">John Doe</li>
             <li class="menu-email">john.doe@ut.ee</li>
-            <li><a class="menu-link" href="login.html">Logout</a></li>
+            <li>
+              <router-link class="menu-link" to="/signup">Logout</router-link>
+            </li>
           </ul>
         </div>
       </div>
