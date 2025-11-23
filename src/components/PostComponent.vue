@@ -1,18 +1,21 @@
 <template>
   <article class="post">
     <header>
-      <img
-        src="@/assets/pfp1.jpg"
-        width="50"
-        alt="The Author's profile picture"
-      />
-      <p>Oct 3, 2025</p>
+      <img :src="authorImage" width="50" alt="The Author's profile picture" />
+      <p>{{ date }}</p>
     </header>
-    <img src="@/assets/food.jpg" />
-    <p>Jippie food!</p>
+    <img :src="image" />
+    <p>{{ text }}</p>
     <a href="#"><i class="fa-regular fa-thumbs-up"></i></a>
   </article>
 </template>
+
+<script>
+export default {
+  props: ["authorImage", "date", "image", "text", "likes"],
+};
+</script>
+
 <style>
 .post {
   background-color: #f3c1d9;

@@ -7,7 +7,14 @@
     <!-- TODO: add logic to use post component and populate it -->
     <main>
       <!-- eslint-disable-next-line -->
-      <PostComponent v-for="post in posts" />
+      <PostComponent
+        v-for="post in posts"
+        :authorImage="post.authorImage"
+        :date="post.date"
+        :image="post.image"
+        :text="post.text"
+        :likes="post.likes"
+      />
     </main>
 
     <aside class="right-aside">
