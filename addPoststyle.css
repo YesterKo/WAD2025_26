@@ -1,73 +1,72 @@
-
 /* Add your CSS styles here */
 
 #add-post-card {
-    background: #e0e0e0;
-    border-radius: 12px;
-    padding: 24px 24px 16px 24px;
-    width: 300px;
-    margin: 40px auto;
-    box-sizing: border-box;
+  background: #e0e0e0;
+  border-radius: 12px;
+  padding: 24px 24px 16px 24px;
+  width: 300px;
+  margin: 40px auto;
+  box-sizing: border-box;
 }
 
 .add-post-form .form-table {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .form-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .form-row label {
-    width: 80px;
-    font-family: monospace;
-    font-size: 1.1em;
-    text-align: right;
-    margin-top: 4px;
+  width: 80px;
+  font-family: monospace;
+  font-size: 1.1em;
+  text-align: right;
+  margin-top: 4px;
 }
 
 .form-row textarea {
-    width: 170px;
-    height: 70px;
-    resize: none;
-    font-family: monospace;
-    font-size: 1em;
-    background: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 170px;
+  height: 70px;
+  resize: none;
+  font-family: monospace;
+  font-size: 1em;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .form-row label + input[type="file"] {
-    width: 170px;
-    background: #bdbdbd;
-    border: 1px solid #888;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 1em;
-    padding: 2px 0;
+  width: 170px;
+  background: #bdbdbd;
+  border: 1px solid #888;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1em;
+  padding: 2px 0;
 }
 
 .form-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
 }
 
 .btn-primary {
-    background: #1a356e;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 7px 28px;
-    font-family: monospace;
-    font-size: 1.1em;
-    cursor: pointer;
+  background: #1a356e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 7px 28px;
+  font-family: monospace;
+  font-size: 1.1em;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
-    background: #274a8e;
+  background: #274a8e;
 }
