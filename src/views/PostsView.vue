@@ -4,17 +4,24 @@
       <p>This is the left aside.</p>
     </aside>
 
-    <!-- TODO: add logic to use post component and populate it -->
+    <!-- Use PostComponent for each post and pass id as prop and key -->
     <main>
       <!-- eslint-disable-next-line -->
       <PostComponent
         v-for="post in posts"
+        :key="post.id"
+        :id="post.id"
         :authorImage="post.authorImage"
         :date="post.date"
         :image="post.image"
         :text="post.text"
         :likes="post.likes"
       />
+      <div class="reset-container">
+        <button class="reset-button" @click="$store.dispatch('resetLikes')">
+          Reset Likes
+        </button>
+      </div>
     </main>
 
     <aside class="right-aside">
@@ -23,12 +30,13 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 import PostComponent from "@/components/PostComponent.vue";
 export default {
   computed: {
-    posts() {
-      return this.$store.state.posts;
-    },
+    ...mapState({
+      posts: (state) => state.posts,
+    }),
   },
   components: {
     PostComponent,
@@ -80,5 +88,25 @@ main {
 
 .right-aside {
   background: linear-gradient(225deg, #f5d0e2, #ff7ebe, #7a1036);
+}
+
+.reset-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.reset-button {
+  background: #bfe8ff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #04263a;
+  font-weight: 600;
+}
+
+.reset-button:hover {
+  background: #aee0ff;
 }
 </style>

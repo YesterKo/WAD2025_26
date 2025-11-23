@@ -6,13 +6,23 @@
     </header>
     <img :src="image" />
     <p>{{ text }}</p>
-    <a href="#"><i class="fa-regular fa-thumbs-up"></i></a>
+    <button @click="increaseLikes" class="like-button" aria-label="Like post">
+      <i class="fa-regular fa-thumbs-up"></i>
+      <span class="likes-count">{{ likes }}</span>
+    </button>
   </article>
 </template>
 
 <script>
 export default {
-  props: ["authorImage", "date", "image", "text", "likes"],
+  props: ["id", "authorImage", "date", "image", "text", "likes"],
+  methods: {
+    increaseLikes() {
+      if (this.id != null) {
+        this.$store.dispatch("addLike", this.id);
+      }
+    },
+  },
 };
 </script>
 
@@ -39,5 +49,19 @@ export default {
     border-radius: 1rem;
     margin-top: 1rem;
   }
+}
+
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.likes-count {
+  font-weight: 600;
 }
 </style>

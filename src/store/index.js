@@ -4,6 +4,7 @@ export default createStore({
   state: {
     posts: [
       {
+        id: 0,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: "img/food.jpg",
@@ -11,6 +12,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 1,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -18,6 +20,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 2,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -25,6 +28,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 3,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: "img/city.jpg",
@@ -32,6 +36,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 4,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -39,6 +44,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 5,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -46,6 +52,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 6,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -53,6 +60,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 7,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -60,6 +68,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 8,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -67,6 +76,7 @@ export default createStore({
         likes: 0,
       },
       {
+        id: 9,
         authorImage: "img/pfp1.jpg",
         date: "Oct 3, 2025",
         image: null,
@@ -76,7 +86,31 @@ export default createStore({
     ],
   },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    // Increment likes for a post by id (payload is the post id)
+    addLike(state, postId) {
+      const post = state.posts.find((p) => p.id === postId);
+      if (post) {
+        // increment the likes count
+        post.likes += 1;
+      }
+    },
+    // Reset all posts' likes to 0
+    resetLikes(state) {
+      state.posts.forEach((p) => {
+        p.likes = 0;
+      });
+    },
+  },
+  actions: {
+    // Action receives the post id and commits the mutation
+    addLike({ commit }, postId) {
+      commit("addLike", postId);
+    },
+    // Action to reset likes for all posts
+    resetLikes({ commit }) {
+      commit("resetLikes");
+    },
+  },
   modules: {},
 });
