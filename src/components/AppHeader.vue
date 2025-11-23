@@ -11,8 +11,10 @@
         <button
           class="profile-btn"
           id="profileBtn"
+          ref="btn"
           aria-haspopup="true"
-          aria-expanded="false"
+          :aria-expanded="menuOpen.toString()"
+          @click.stop="toggleMenu"
         >
           <img
             src="@/assets/pfp1.jpg"
@@ -22,7 +24,12 @@
           />
         </button>
 
-        <div class="dropdown" id="profileDropdown">
+        <div
+          class="dropdown"
+          id="profileDropdown"
+          ref="menu"
+          :class="{ open: menuOpen }"
+        >
           <ul class="menu">
             <li class="menu-name">John Doe</li>
             <li class="menu-email">john.doe@ut.ee</li>
@@ -33,6 +40,51 @@
     </nav>
   </header>
 </template>
+
+<script>
+export default {
+  name: "AppHeader",
+
+  data() {
+    return {
+      menuOpen: false,
+    };
+  },
+
+  methods: {
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+    },
+
+    closeMenuOnOutsideClick(e) {
+      // check if clicked outside
+      const btn = this.$refs.btn;
+      const menu = this.$refs.menu;
+
+      if (!btn || !menu) return;
+
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        this.menuOpen = false;
+      }
+    },
+
+    closeMenuOnEscape(e) {
+      if (e.key === "Escape") this.menuOpen = false;
+    },
+  },
+
+  mounted() {
+    window.addEventListener("click", this.closeMenuOnOutsideClick);
+    window.addEventListener("keydown", this.closeMenuOnEscape);
+  },
+
+  beforeUnmount() {
+    window.removeEventListener("click", this.closeMenuOnOutsideClick);
+    window.removeEventListener("keydown", this.closeMenuOnEscape);
+  },
+};
+</script>
+
 <style>
 .main-nav {
   display: flex;
