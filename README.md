@@ -2,6 +2,8 @@
 
 ## Project setup
 
+You must import the database from file /server/db/export.sql and set correct credentials in ./server/config file
+
 ```
 npm install
 ```
