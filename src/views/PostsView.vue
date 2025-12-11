@@ -17,7 +17,11 @@
         :text="post.text"
         :likes="post.likes"
       />
+      <!-- Add Post -->
       <div class="reset-container">
+        <button class="reset-button" @click="$router.push('/add')">
+          Add Post
+        </button>
         <button class="reset-button" @click="$store.dispatch('resetLikes')">
           Reset Likes
         </button>

@@ -3,7 +3,6 @@
     <nav class="main-nav">
       <ul>
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/add">Add Post</router-link></li>
         <li><router-link to="/signup">Sign Up</router-link></li>
       </ul>
 
