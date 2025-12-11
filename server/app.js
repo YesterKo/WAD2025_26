@@ -10,6 +10,7 @@ const { query, pool } = require('./db'); // Assuming you have a db.js file expor
 const bcrypt = require('bcrypt'); // Import bcrypt for password hashing
 const uuid = require('uuid').v4(); // Generate a unique identifier
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 const e = require('express');
 const { verifyToken, generateToken } = require('./auth'); // Import the generateToken function from auth.js
 
@@ -19,6 +20,10 @@ const { verifyToken, generateToken } = require('./auth'); // Import the generate
 const app = express();
 
 const port = 3000;
+
+app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+// We need to include "credentials: true" to allow cookies to be represented  
+// Also "credentials: 'include'" need to be added in Fetch API in the Vue.js App
 
 app.use(cookieParser()); 
 app.use(express.json());
