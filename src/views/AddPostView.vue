@@ -12,7 +12,9 @@
 
       <div class="actions">
         <button type="submit" :disabled="loading || !body">Add</button>
-        <button type="button" @click="cancel" :disabled="loading">Cancel</button>
+        <button type="button" @click="cancel" :disabled="loading">
+          Cancel
+        </button>
       </div>
 
       <p v-if="error" class="error">{{ error }}</p>

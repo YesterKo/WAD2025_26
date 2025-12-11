@@ -7,7 +7,7 @@ const routes = [
     path: "/",
     name: "posts",
     component: PostsView,
-    meta: { requiresAuth: true } //protects home
+    meta: { requiresAuth: true }, //protects home
   },
   {
     path: "/signup",
@@ -27,7 +27,7 @@ const routes = [
     path: "/add",
     name: "addpost",
     component: () => import("../views/AddPostView.vue"),
-  }
+  },
 ];
 
 const router = createRouter({
