@@ -1,43 +1,37 @@
 <template>
-  <app-header />
+  <div id="login-container">
+    <section class="login-box">
+      <div class="title">Welcome to PostIt</div>
 
-  <main>
-    <div id="login-container">
-      <section class="login-box">
-        <div class="title">Welcome to PostIt</div>
+      <div class="create-account">
+        <a href="#">Create an account</a>
+      </div>
 
-        <div class="create-account">
-          <a href="#">Create an account</a>
-        </div>
+      <p class="or">or</p>
+      <p class="login-text">Please log in</p>
 
-        <p class="or">or</p>
-        <p class="login-text">Please log in</p>
+      <form @submit.prevent="submitForm">
+        <input type="email" v-model="email" placeholder="Email" required />
+        <br />
 
-        <form @submit.prevent="submitForm">
-          <input type="email" v-model="email" placeholder="Email" required />
-          <br />
+        <input
+          type="password"
+          v-model="password"
+          placeholder="Password"
+          required
+        />
+        <br />
 
-          <input
-            type="password"
-            v-model="password"
-            placeholder="Password"
-            required
-          />
-          <br />
+        <p v-if="errorMsg" class="error">{{ errorMsg }}</p>
 
-          <p v-if="errorMsg" class="error">{{ errorMsg }}</p>
+        <button type="submit">Sign up</button>
+      </form>
 
-          <button type="submit">Sign up</button>
-        </form>
-
-        <div class="forget-password">
-          <a href="#">Forget password</a>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <app-footer />
+      <div class="forget-password">
+        <a href="#">Forget password</a>
+      </div>
+    </section>
+  </div>
 </template>
 <script>
 export default {

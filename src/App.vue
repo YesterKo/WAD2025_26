@@ -1,6 +1,8 @@
 <template>
   <AppHeader />
-  <router-view />
+  <main>
+    <router-view />
+  </main>
   <AppFooter />
 </template>
 
