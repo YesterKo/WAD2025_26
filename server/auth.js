@@ -1,30 +1,30 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const config = require("./config");
 function verifyToken(req, res, next) {
-    try {   
+  try {
     const token = req.cookies.JWT;
-    if (!token) return res.status(401).json({ error: 'Access denied' });
-        try {
-            const decoded = jwt.verify(token, config.jwtSecret);
-            if (!decoded) {
-                return res.status(401).json({ error: 'Invalid token' });
-            }
-            req.user = decoded;
-            next();
-        } catch (error) {
-            res.status(401).json({ error: 'Invalid token' });
-        }
+    if (!token) return res.status(401).json({ error: "Access denied" });
+    try {
+      const decoded = jwt.verify(token, config.jwtSecret);
+      if (!decoded) {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+      req.user = decoded;
+      next();
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+      res.status(401).json({ error: "Invalid token" });
     }
-};
-
-function generateToken(user) {
-    const payload = {
-        UserId: user.id,
-        Username: user.username,
-    };
-    return jwt.sign(payload, config.jwtSecret, { expiresIn: '1h' });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
 }
 
-module.exports = {verifyToken,generateToken};
+function generateToken(user) {
+  const payload = {
+    UserId: user.id,
+    Username: user.username,
+  };
+  return jwt.sign(payload, config.jwtSecret, { expiresIn: "1h" });
+}
+
+module.exports = { verifyToken, generateToken };
