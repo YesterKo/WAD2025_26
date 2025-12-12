@@ -9,7 +9,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
       # Uncomment below to initialize with export.sql
-      # - ./server/db/export.sql:/docker-entrypoint-initdb.d/export.sql
+      - ./server/db/export.sql:/docker-entrypoint-initdb.d/export.sql
     ports:
       - "5432:5432"
 
