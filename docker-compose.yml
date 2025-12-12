@@ -1,13 +1,13 @@
 services:
   db:
-    image: postgres:16-alpine
+    image: postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: WAD202526
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: WAD202526
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
       # Uncomment below to initialize with export.sql
       # - ./server/db/export.sql:/docker-entrypoint-initdb.d/export.sql
     ports:
