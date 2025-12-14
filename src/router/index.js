@@ -15,6 +15,11 @@ const routes = [
     component: SignupView,
   },
   {
+    path: "/login",
+    name: "login",
+    component: SignupView,
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting

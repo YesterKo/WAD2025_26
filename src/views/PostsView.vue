@@ -20,12 +20,16 @@
       />
       <!-- Add Post -->
       <div class="reset-container">
-        <button class="reset-button" @click="$router.push('/add')">
+        <button
+          v-if="isLoggedIn"
+          class="reset-button"
+          @click="$router.push('/add')"
+        >
           Add Post
         </button>
-        <button class="reset-button" @click="$store.dispatch('resetLikes')">
+        <!--<button class="reset-button" @click="$store.dispatch('resetLikes')">
           Reset Likes
-        </button>
+        </button>-->
       </div>
     </main>
 
@@ -41,13 +45,31 @@ export default {
   mounted() {
     this.$store.dispatch("getPosts");
   },
+  data() {
+    null;
+  },
   computed: {
     ...mapState({
       posts: (state) => state.posts,
     }),
+    isLoggedIn() {
+      const token = this.token;
+      console.log("token", token);
+      return token != null && token.length;
+    },
   },
   components: {
     PostComponent,
+  },
+  watch: {
+    "$route.name": {
+      handler: function (name) {
+        console.log("name", name);
+        this.token = localStorage.getItem("token");
+      },
+      deep: true,
+      immediate: true,
+    },
   },
 };
 </script>

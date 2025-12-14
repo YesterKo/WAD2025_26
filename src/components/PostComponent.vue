@@ -32,6 +32,7 @@ export default {
 
 <style>
 .post {
+  cursor: pointer;
   background-color: #f3c1d9;
   border-radius: 1rem;
   padding: 1rem;

@@ -67,7 +67,7 @@ app.post("/login", async (req, res) => {
 
   const token = generateToken(user);
   res.cookie("JWT", token, { httpOnly: true, secure: false }); // Set secure: true in production with HTTPS
-  res.json({ message: "Login successful" });
+  res.json({ message: "Login successful", token });
 });
 
 app.post("/signup", async (req, res) => {
@@ -94,7 +94,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.get("/posts", verifyToken, async (req, res) => {
+app.get("/posts", async (req, res) => {
   try {
     const result = await query("SELECT id, title, content,image FROM posts");
     res.json(result.rows);

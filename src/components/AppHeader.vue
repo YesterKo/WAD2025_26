@@ -3,10 +3,10 @@
     <nav class="main-nav">
       <ul>
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/signup">Sign Up</router-link></li>
+        <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
       </ul>
 
-      <div class="user-profile">
+      <div v-if="isLoggedIn" class="user-profile">
         <button
           class="profile-btn"
           id="profileBtn"
@@ -33,7 +33,7 @@
             <li class="menu-name">John Doe</li>
             <li class="menu-email">john.doe@ut.ee</li>
             <li>
-              <router-link class="menu-link" to="/signup">Logout</router-link>
+              <a href="#" @click.prevent="onLogout" class="menu-link">Logout</a>
             </li>
           </ul>
         </div>
@@ -49,10 +49,23 @@ export default {
   data() {
     return {
       menuOpen: false,
+      token: null,
     };
   },
 
+  computed: {
+    isLoggedIn() {
+      const token = this.token;
+      console.log("token", token);
+      return token != null && token.length;
+    },
+  },
+
   methods: {
+    onLogout() {
+      localStorage.removeItem("token");
+      this.$router.push({ name: "login" });
+    },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
     },
@@ -71,6 +84,17 @@ export default {
 
     closeMenuOnEscape(e) {
       if (e.key === "Escape") this.menuOpen = false;
+    },
+  },
+
+  watch: {
+    "$route.name": {
+      handler: function (name) {
+        console.log("name", name);
+        this.token = localStorage.getItem("token");
+      },
+      deep: true,
+      immediate: true,
     },
   },
 

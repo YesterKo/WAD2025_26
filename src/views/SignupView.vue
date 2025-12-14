@@ -4,11 +4,20 @@
       <div class="title">Welcome to PostIt</div>
 
       <div class="create-account">
-        <a href="#">Create an account</a>
+        <a
+          href="#"
+          @click.prevent="
+            () =>
+              isLogin
+                ? $router.push({ name: 'signup' })
+                : $router.push({ name: 'login' })
+          "
+          >{{ isLogin ? "Create an account" : "Log in" }}</a
+        >
       </div>
 
       <p class="or">or</p>
-      <p class="login-text">Please log in</p>
+      <p class="login-text">Please {{ isLogin ? "log in" : "sign up" }}</p>
 
       <form @submit.prevent="submitForm">
         <input type="email" v-model="email" placeholder="Email" required />
@@ -24,11 +33,11 @@
 
         <p v-if="errorMsg" class="error">{{ errorMsg }}</p>
 
-        <button type="submit">Sign up</button>
+        <button type="submit">{{ isLogin ? "Log in" : "Sign up" }}</button>
       </form>
 
-      <div class="forget-password">
-        <a href="#">Forget password</a>
+      <div v-if="isLogin" class="forget-password">
+        <a href="#">Forgot password?</a>
       </div>
     </section>
   </div>
@@ -42,6 +51,11 @@ export default {
       password: "",
       errorMsg: "",
     };
+  },
+  computed: {
+    isLogin() {
+      return this.$route.name === "login";
+    },
   },
   methods: {
     validatePassword() {
@@ -83,11 +97,52 @@ export default {
       return true;
     },
 
-    submitForm() {
+    async submitForm() {
       if (!this.validatePassword()) return;
 
+      if (this.isLogin) {
+        try {
+          const res = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: this.email,
+              password: this.password,
+            }),
+          });
+
+          const { token } = await res.json();
+
+          if (token != null) {
+            localStorage.setItem("token", token);
+            this.$router.push("/");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        try {
+          await fetch("http://localhost:3000/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: this.email,
+              password: this.password,
+            }),
+          });
+
+          this.$router.push({ name: "login" });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
       // Password validated → continue (redirect, API call, etc.)
-      this.$router.push("/");
+      //this.$router.push("/");
     },
   },
 };

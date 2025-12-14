@@ -38,7 +38,10 @@ export default {
 
   beforeMount() {
     const token = localStorage.getItem("token");
-    console.log("token", token);
+
+    if (token == null && !token?.length) {
+      this.$router.push("/");
+    }
   },
 
   methods: {
