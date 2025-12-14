@@ -40,6 +40,10 @@ export default createStore({
 
       const posts = await response.json();
 
+      posts.forEach((post) => {
+        post.date = new Date(post.date).toLocaleString();
+      });
+
       console.log("posts", posts);
       commit("setPosts", posts);
     },

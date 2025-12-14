@@ -34,7 +34,8 @@ CREATE TABLE public.posts (
     id bigint NOT NULL,
     title character varying(255),
     content character varying(255),
-    image character varying(255)
+    image character varying(255),
+    date timestamp without time zone default current_timestamp
 );
 
 
@@ -147,4 +148,3 @@ ALTER TABLE ONLY public.users
 --
 
 \unrestrict ryfPkIt6yUIeZefeWsbhRDw2FRlUtCeDDq0mmcBP5zoizcirUviGcvz8Sidd6Nb
-

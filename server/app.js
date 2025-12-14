@@ -115,7 +115,9 @@ app.post("/logout", (req, res) => {
 
 app.get("/posts", async (req, res) => {
   try {
-    const result = await query("SELECT id, title, content,image FROM posts");
+    const result = await query(
+      "SELECT id, title, content, image, date FROM posts"
+    );
     res.json(result.rows);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
@@ -162,7 +164,7 @@ app.get("/posts/:id", verifyToken, async (req, res) => {
   try {
     const postId = req.params.id;
     const result = await query(
-      "SELECT id, title, content,image FROM posts WHERE id = $1",
+      "SELECT id, title, content, image, date FROM posts WHERE id = $1",
       [postId]
     );
     if (result.rows.length === 0) {
