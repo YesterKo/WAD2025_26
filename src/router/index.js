@@ -39,6 +39,7 @@ const routes = [
     path: "/post/:id",
     name: "editpost",
     component: () => import("../views/AddPostView.vue"),
+    beforeEnter: auth.requireAuth,
   },
 ];
 
