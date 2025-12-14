@@ -14,7 +14,8 @@
         :authorImage="post.authorImage"
         :date="post.date"
         :image="post.image"
-        :text="post.text"
+        :title="post.title"
+        :text="post.content"
         :likes="post.likes"
       />
       <!-- Add Post -->
@@ -37,6 +38,9 @@
 import { mapState } from "vuex";
 import PostComponent from "@/components/PostComponent.vue";
 export default {
+  mounted() {
+    this.$store.dispatch("getPosts");
+  },
   computed: {
     ...mapState({
       posts: (state) => state.posts,

@@ -28,6 +28,11 @@ const routes = [
     name: "addpost",
     component: () => import("../views/AddPostView.vue"),
   },
+  {
+    path: "/post/:id",
+    name: "editpost",
+    component: () => import("../views/AddPostView.vue"),
+  },
 ];
 
 const router = createRouter({

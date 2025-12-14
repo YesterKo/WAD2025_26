@@ -3,6 +3,7 @@
     <h1>Add Post</h1>
 
     <form @submit.prevent="submitPost">
+      <input v-model="title" required placeholder="Title" />
       <textarea
         v-model="body"
         placeholder="Write your post…"
@@ -29,9 +30,15 @@ export default {
   data() {
     return {
       body: "",
+      title: "",
       loading: false,
       error: "",
     };
+  },
+
+  beforeMount() {
+    const token = localStorage.getItem("token");
+    console.log("token", token);
   },
 
   methods: {
@@ -48,7 +55,10 @@ export default {
             "Content-Type": "application/json",
             Authorization: token ? `Bearer ${token}` : "",
           },
-          body: JSON.stringify({ body: this.body }),
+          body: JSON.stringify({
+            title: this.title,
+            content: this.body,
+          }),
         });
 
         if (!res.ok) {

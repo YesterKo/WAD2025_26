@@ -1,26 +1,30 @@
 <template>
-  <article class="post">
+  <article class="post" @click="onClick">
     <header>
       <img :src="authorImage" width="50" alt="The Author's profile picture" />
       <p>{{ date }}</p>
     </header>
     <img :src="image" />
+    <p>{{ title }}</p>
     <p>{{ text }}</p>
-    <button @click="increaseLikes" class="like-button" aria-label="Like post">
+    <!--<button @click="increaseLikes" class="like-button" aria-label="Like post">
       <i class="fa-regular fa-thumbs-up"></i>
       <span class="likes-count">{{ likes }}</span>
-    </button>
+    </button>-->
   </article>
 </template>
 
 <script>
 export default {
-  props: ["id", "authorImage", "date", "image", "text", "likes"],
+  props: ["id", "authorImage", "date", "image", "text", "likes", "title"],
   methods: {
     increaseLikes() {
       if (this.id != null) {
         this.$store.dispatch("addLike", this.id);
       }
+    },
+    onClick() {
+      this.$router.push({ name: "editpost", params: { id: this.id } });
     },
   },
 };
