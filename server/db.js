@@ -43,8 +43,7 @@ const initQueries = [
     username VARCHAR(255),
     password VARCHAR(255)
   );
-  `
-  
+  `,
 ];
 
 async function initDatabase() {
@@ -59,7 +58,7 @@ async function query(text, params) {
   return res;
 }
 
-initDatabase()
+initDatabase();
 
 module.exports = {
   query,
