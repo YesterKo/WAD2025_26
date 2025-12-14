@@ -27,6 +27,13 @@
         >
           Add Post
         </button>
+        <button
+          v-if="isLoggedIn"
+          class="reset-button"
+          @click.prevent="onDeleteAll"
+        >
+          DELETE ALL
+        </button>
         <!--<button class="reset-button" @click="$store.dispatch('resetLikes')">
           Reset Likes
         </button>-->
@@ -47,6 +54,21 @@ export default {
   },
   data() {
     null;
+  },
+  methods: {
+    async onDeleteAll() {
+      const token = localStorage.getItem("token");
+      for (let i = 0; i < this.posts.length; i++) {
+        await fetch("http://localhost:3000/posts/" + this.posts[i].id, {
+          method: "DELETE",
+          headers: {
+            Authorization: token ? `Bearer ${token}` : "",
+          },
+        });
+      }
+
+      this.$store.commit("setPosts");
+    },
   },
   computed: {
     ...mapState({

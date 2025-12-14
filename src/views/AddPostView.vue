@@ -12,8 +12,16 @@
       ></textarea>
 
       <div class="actions">
-        <button type="submit" :disabled="loading || !body">Add</button>
-        <button type="button" @click="cancel" :disabled="loading">
+        <button type="submit" :disabled="loading || !body">
+          {{ this.$route.name === "editpost" ? "Edit" : "Add" }}
+        </button>
+        <button
+          v-if="this.$route.name === 'editpost'"
+          @click.prevent="onDelete"
+        >
+          Delete
+        </button>
+        <button type="button" @click.prevent="cancel" :disabled="loading">
           Cancel
         </button>
       </div>
@@ -42,18 +50,60 @@ export default {
     if (token == null && !token?.length) {
       this.$router.push("/");
     }
+
+    if (this.$route.name === "editpost") {
+      this.getPost();
+    }
   },
 
   methods: {
+    async onDelete() {
+      const token = localStorage.getItem("token");
+
+      await fetch("http://localhost:3000/posts/" + this.$route.params.id, {
+        method: "DELETE",
+        headers: {
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+      });
+
+      this.$router.push("/");
+    },
+    async getPost() {
+      const token = localStorage.getItem("token");
+      try {
+        const res = await fetch(
+          "http://localhost:3000/posts/" + this.$route.params.id,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token ? `Bearer ${token}` : "",
+            },
+          }
+        );
+
+        const { title, content } = await res.json();
+        this.body = content;
+        this.title = title;
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async submitPost() {
       this.loading = true;
       this.error = "";
 
+      const isEdit = this.$route.name === "editpost";
+      const url = isEdit
+        ? "http://localhost:3000/posts/" + this.$route.params.id
+        : "http://localhost:3000/posts";
+
       try {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("http://localhost:3000/posts", {
-          method: "POST",
+        const res = await fetch(url, {
+          method: isEdit ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: token ? `Bearer ${token}` : "",
