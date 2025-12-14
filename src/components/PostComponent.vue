@@ -1,7 +1,7 @@
 <template>
   <article class="post" @click="onClick">
     <header>
-      <img :src="authorImage" width="50" alt="The Author's profile picture" />
+      <!--<img :src="authorImage" width="50" alt="The Author's profile picture" />-->
       <p>{{ date }}</p>
     </header>
     <img :src="image" />
