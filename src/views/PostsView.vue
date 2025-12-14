@@ -20,18 +20,10 @@
       />
       <!-- Add Post -->
       <div class="reset-container">
-        <button
-          v-if="isLoggedIn"
-          class="reset-button"
-          @click="$router.push('/add')"
-        >
+        <button class="reset-button" @click="$router.push('/add')">
           Add Post
         </button>
-        <button
-          v-if="isLoggedIn"
-          class="reset-button"
-          @click.prevent="onDeleteAll"
-        >
+        <button class="reset-button" @click.prevent="onDeleteAll">
           DELETE ALL
         </button>
         <!--<button class="reset-button" @click="$store.dispatch('resetLikes')">
@@ -71,12 +63,6 @@ export default {
     ...mapState({
       posts: (state) => state.posts,
     }),
-    isLoggedIn() {
-      // This should be replaced with a proper authentication check, e.g., from Vuex or a global state.
-      // For now, always return true if the backend session is valid.
-      // You may want to refactor this to use a global auth state.
-      return true;
-    },
   },
   components: {
     PostComponent,
