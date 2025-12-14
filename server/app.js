@@ -66,7 +66,11 @@ app.post("/login", async (req, res) => {
   }
 
   const token = generateToken(user);
-  res.cookie("JWT", token, { httpOnly: true, secure: false }); // Set secure: true in production with HTTPS
+  res.cookie("JWT", token, {
+    sameSite: "lax",
+    httpOnly: true,
+    secure: false,
+  }); // Set secure: true in production with HTTPS
   res.json({ message: "Login successful", token });
 });
 

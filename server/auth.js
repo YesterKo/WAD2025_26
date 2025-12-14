@@ -4,14 +4,8 @@ function verifyToken(req, res, next) {
   // NEVER COMMENT THIS OUT AGAIN
 
   try {
-        const authHeader = req.headers.authorization;
+    const token = req.cookies.JWT;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({ error: "Access denied" });
-    }
-
-    const token = authHeader.split(" ")[1];
-    
     if (!token) return res.status(401).json({ error: "Access denied" });
     try {
       const decoded = jwt.verify(token, config.jwtSecret);
