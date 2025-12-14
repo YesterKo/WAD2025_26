@@ -1,13 +1,14 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import PostsView from "../views/PostsView.vue";
 import SignupView from "../views/SignupView.vue";
+import auth from "../auth.js";
 
 const routes = [
   {
     path: "/",
     name: "posts",
     component: PostsView,
-    meta: { requiresAuth: true }, //protects home
+    beforeEnter: auth.requireAuth,
   },
   {
     path: "/signup",

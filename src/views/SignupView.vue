@@ -111,6 +111,7 @@ export default {
               username: this.email,
               password: this.password,
             }),
+            credentials: "include",
           });
 
           const { token } = await res.json();
