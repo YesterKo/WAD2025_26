@@ -3,6 +3,7 @@
     <nav class="main-nav">
       <ul>
         <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/about">Contacts</router-link></li>
         <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
       </ul>
 
