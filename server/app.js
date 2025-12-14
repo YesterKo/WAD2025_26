@@ -47,6 +47,16 @@ app.get("/about", (req, res) => {
   res.send("About Page");
 });
 
+app.get("/authenticate", (req, res) => {
+  try {
+    verifyToken(req, res, () => {
+      res.json({ authenticated: true });
+    });
+  } catch (err) {
+    res.json({ authenticated: false });
+  }
+});
+
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
   const result = await query(
