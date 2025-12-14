@@ -50,21 +50,24 @@ export default {
   data() {
     return {
       menuOpen: false,
-      token: null,
+      isAuthenticated: false,
     };
   },
 
   computed: {
     isLoggedIn() {
-      const token = this.token;
-      console.log("token", token);
-      return token != null && token.length;
+      return this.isAuthenticated;
     },
   },
 
   methods: {
-    onLogout() {
-      localStorage.removeItem("token");
+    async onLogout() {
+      // Call backend to clear cookie
+      await fetch("http://localhost:3000/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      this.isAuthenticated = false;
       this.$router.push({ name: "login" });
     },
     toggleMenu() {
@@ -90,9 +93,17 @@ export default {
 
   watch: {
     "$route.name": {
-      handler: function (name) {
-        console.log("name", name);
-        this.token = localStorage.getItem("token");
+      handler: async function () {
+        // Check authentication status from backend
+        try {
+          const res = await fetch("http://localhost:3000/authenticate", {
+            credentials: "include",
+          });
+          const data = await res.json();
+          this.isAuthenticated = data.authenticated;
+        } catch (e) {
+          this.isAuthenticated = false;
+        }
       },
       deep: true,
       immediate: true,

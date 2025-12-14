@@ -117,7 +117,6 @@ export default {
           const { token } = await res.json();
 
           if (token != null) {
-            localStorage.setItem("token", token);
             this.$router.push("/");
           }
         } catch (error) {

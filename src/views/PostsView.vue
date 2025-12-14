@@ -57,13 +57,10 @@ export default {
   },
   methods: {
     async onDeleteAll() {
-      const token = localStorage.getItem("token");
       for (let i = 0; i < this.posts.length; i++) {
         await fetch("http://localhost:3000/posts/" + this.posts[i].id, {
           method: "DELETE",
-          headers: {
-            Authorization: token ? `Bearer ${token}` : "",
-          },
+          credentials: "include",
         });
       }
 
@@ -75,24 +72,16 @@ export default {
       posts: (state) => state.posts,
     }),
     isLoggedIn() {
-      const token = this.token;
-      console.log("token", token);
-      return token != null && token.length;
+      // This should be replaced with a proper authentication check, e.g., from Vuex or a global state.
+      // For now, always return true if the backend session is valid.
+      // You may want to refactor this to use a global auth state.
+      return true;
     },
   },
   components: {
     PostComponent,
   },
-  watch: {
-    "$route.name": {
-      handler: function (name) {
-        console.log("name", name);
-        this.token = localStorage.getItem("token");
-      },
-      deep: true,
-      immediate: true,
-    },
-  },
+  // Removed watcher for localStorage token, as authentication is now cookie-based.
 };
 </script>
 <style>

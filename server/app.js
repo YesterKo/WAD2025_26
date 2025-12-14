@@ -108,6 +108,11 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+app.post("/logout", (req, res) => {
+  console.log("delete jwt request arrived");
+  res.status(202).clearCookie("JWT").json({ Msg: "cookie cleared" }).send;
+});
+
 app.get("/posts", async (req, res) => {
   try {
     const result = await query("SELECT id, title, content,image FROM posts");

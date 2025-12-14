@@ -44,13 +44,7 @@ export default {
     };
   },
 
-  beforeMount() {
-    const token = localStorage.getItem("token");
-
-    if (token == null && !token?.length) {
-      this.$router.push("/");
-    }
-
+  async beforeMount() {
     if (this.$route.name === "editpost") {
       this.getPost();
     }
@@ -58,19 +52,14 @@ export default {
 
   methods: {
     async onDelete() {
-      const token = localStorage.getItem("token");
-
       await fetch("http://localhost:3000/posts/" + this.$route.params.id, {
         method: "DELETE",
-        headers: {
-          Authorization: token ? `Bearer ${token}` : "",
-        },
+        credentials: "include",
       });
 
       this.$router.push("/");
     },
     async getPost() {
-      const token = localStorage.getItem("token");
       try {
         const res = await fetch(
           "http://localhost:3000/posts/" + this.$route.params.id,
@@ -78,8 +67,8 @@ export default {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: token ? `Bearer ${token}` : "",
             },
+            credentials: "include",
           }
         );
 
@@ -100,14 +89,12 @@ export default {
         : "http://localhost:3000/posts";
 
       try {
-        const token = localStorage.getItem("token");
-
         const res = await fetch(url, {
           method: isEdit ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: token ? `Bearer ${token}` : "",
           },
+          credentials: "include",
           body: JSON.stringify({
             title: this.title,
             content: this.body,
