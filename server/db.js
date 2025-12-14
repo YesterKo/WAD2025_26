@@ -33,7 +33,8 @@ const initQueries = [
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title VARCHAR(255),
     content VARCHAR(255),
-    image VARCHAR(255)
+    image VARCHAR(255),
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
   `,
   `
