@@ -10,6 +10,46 @@ const pool = new Pool({
   port: config.database.port,
 });
 
+async function executeQueries(queries) {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    for (const query of queries) {
+      await client.query(query);
+    }
+    await client.query("COMMIT");
+    console.log("Database initialized successfully");
+  } catch (error) {
+    await client.query("ROLLBACK");
+    console.error("Error initializing database:", error.stack);
+  } finally {
+    client.release();
+  }
+}
+
+const initQueries = [
+  `
+  CREATE TABLE IF NOT EXISTS public.posts (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title VARCHAR(255),
+    content VARCHAR(255),
+    image VARCHAR(255)
+  );
+  `,
+  `
+  CREATE TABLE IF NOT EXISTS public.users (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255)
+  );
+  `
+  
+];
+
+async function initDatabase() {
+  await executeQueries(initQueries);
+}
+
 async function query(text, params) {
   const start = Date.now();
   const res = await pool.query(text, params);
@@ -17,6 +57,8 @@ async function query(text, params) {
   console.log("Executed query", { text, duration, rows: res.rowCount });
   return res;
 }
+
+initDatabase()
 
 module.exports = {
   query,
